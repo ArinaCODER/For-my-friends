@@ -84,18 +84,17 @@
 </head>
 <body>
     <h1>АРИНА И ЕЕ ДРУЗЬЯ</h1>
-    
-    <!-- Добавление анимации падающих листьев -->
-    <img class="falling-leaf" src="лист.png" alt="Падающий лист" style="width: 50px; left: 20%; top: 0; animation: fall 15s infinite;"> <!-- Лист падает каждые 15 секунд -->
+
     <script>
         function createFallingLeaf() {
             const leaf = document.createElement('img');
             leaf.src = 'лист.png';
             leaf.className = 'falling-leaf';
-            leaf.style.width = '50px';
+            leaf.style.width = '30px'; // Уменьшенный размер листа
             leaf.style.left = `${Math.random() * 100}%;`;
-            leaf.style.animation = `fall 1s linear forwards`; // Лист падает каждые 1 секунду
+            leaf.style.animation = `fall 5s linear forwards`; // Лист падает за 5 секунд
             leaf.style.top = '0';
+            leaf.style.opacity = '1'; // Устанавливаем непрозрачность
 
             document.body.appendChild(leaf);
 
@@ -153,7 +152,7 @@
         <img src="Матвей.jpg" alt="Матвей">
         <p>Самый эмпатичный человек, которого я знаю. Я просто люблю тебя! Спасибо, что всегда рядом и поддерживаешь и веришь в меня!</p>
     </div>
-    
+
     <!-- Дополнительный контент для прокрутки -->
     <div style="height: 1500px;"></div> <!-- Добавляем пустой элемент для прокрутки -->
 </body>
