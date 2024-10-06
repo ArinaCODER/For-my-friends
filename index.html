@@ -4,85 +4,111 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Арина и её друзья</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> <!-- Подключаем шрифт -->
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #F9E36A; /* светло-желтый цвет, напоминающий подсолнечники */
-            color: #8B5A2B; /* коричневый цвет текста */
+            font-family: 'Roboto', sans-serif; /* Современный шрифт */
+            background-color: #e3f2fd; /* Светлый синий фон */
             margin: 0;
             padding: 20px;
             text-align: center;
-            overflow: hidden; /* предотвращает появление полосы прокрутки */
+            position: relative;
+            overflow-y: auto;
+            min-height: 100vh;
         }
         h1 {
-            color: #FFB800; /* оранжевый цвет заголовка */
-            text-transform: uppercase; /* текст в верхнем регистре */
-            font-size: 2.5em; /* увеличенный размер текста */
+            color: #00BFFF; /* Голубой цвет заголовка */
+            margin-bottom: 20px;
+            text-transform: uppercase; /* Капсом */
         }
         .friend {
             margin: 20px 0;
             padding: 20px;
-            background-color: #fff;
-            border-radius: 50%; /* круглые блоки */
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            display: inline-block;
-            width: 250px; /* фиксированная ширина для блока друга */
-            transition: transform 0.3s ease; /* анимация при наведении */
+            background-color: #ffffff; /* Белый фон карточки */
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+            transition: transform 0.2s; /* Плавное изменение трансформации */
         }
         .friend:hover {
-            transform: scale(1.05); /* увеличивает блок при наведении */
+            transform: translateY(-5px); /* Качание карточки при наведении */
         }
         img {
-            width: 100px; /* уменьшенный размер фотографии */
-            height: 100px; /* уменьшенный размер фотографии */
-            border-radius: 50%; /* круглые фотографии */
-            transition: transform 0.3s ease; /* анимация при наведении */
+            width: 150px; /* Размер изображения 150px */
+            height: 150px; /* Размер изображения 150px */
+            border-radius: 50%; /* Круглая иконка */
+            border: 2px solid #ff9800; /* Оранжевый круглый контур */
+            transition: transform 0.2s; /* Плавное изменение трансформации для изображения */
         }
         img:hover {
-            transform: rotate(5deg); /* наклон фотографии при наведении */
+            transform: scale(1.1) rotate(-5deg); /* Увеличение и небольшое вращение при наведении */
         }
         p {
-            font-size: 1.2em; /* увеличенный размер текста */
-            color: #8B5A2B; /* коричневый цвет текста */
-            margin-top: 10px;
+            font-size: 18px; /* Увеличение размера текста под фотографиями */
+            color: #333;
         }
 
         /* Анимация падающих листьев */
-        .leaf {
+        .falling-leaf {
             position: absolute;
-            width: 50px;
-            opacity: 0.8;
-            pointer-events: none; /* игнорировать события мыши для листьев */
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        /* Стили для осеннего фона */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, #ff9800, #2196F3); /* Градиент от оранжевого к синему */
+            z-index: -1; /* За всеми элементами */
+            opacity: 0.8; /* Непрозрачность фона */
         }
     </style>
+</head>
+<body>
+    <h1>АРИНА И ЕЕ ДРУЗЬЯ</h1>
+    
+    <!-- Добавление анимации падающих листьев -->
+    <img class="falling-leaf" src="лист.png" alt="Падающий лист" style="width: 50px; left: 20%; top: 0; animation: fall 15s infinite;"> <!-- Лист падает каждые 15 секунд -->
     <script>
-        // Функция для создания падающего листа
-        function createLeaf() {
+        function createFallingLeaf() {
             const leaf = document.createElement('img');
-            leaf.src = 'лист.png'; // изображение листа
-            leaf.className = 'leaf';
-            leaf.style.left = Math.random() * window.innerWidth + 'px'; // случайная позиция по X
-            leaf.style.top = '-50px'; // начало сверху
-            document.body.appendChild(leaf);
-            
-            // Анимация падения
-            setTimeout(() => {
-                leaf.style.transition = 'top 5s linear'; // время падения
-                leaf.style.top = window.innerHeight + 'px'; // конечная позиция снизу
-            }, 0);
+            leaf.src = 'лист.png';
+            leaf.className = 'falling-leaf';
+            leaf.style.width = '50px';
+            leaf.style.left = `${Math.random() * 100}%;`;
+            leaf.style.animation = `fall 1s linear forwards`; // Лист падает каждые 1 секунду
+            leaf.style.top = '0';
 
-            // Удаление листа после падения
-            leaf.addEventListener('transitionend', () => {
+            document.body.appendChild(leaf);
+
+            // Удаляем лист после завершения анимации
+            leaf.addEventListener('animationend', () => {
                 leaf.remove();
             });
         }
 
-        // Генерация листьев каждые 5 секунд
-        setInterval(createLeaf, 5000);
+        // Создаем новый лист каждые 1 секунду
+        setInterval(createFallingLeaf, 1000);
     </script>
-</head>
-<body>
-    <h1>Арина и её друзья</h1>
+
     <div class="friend">
         <img src="photo_2023-11-03_19-53-30.jpg" alt="Арина">
         <p>Привет! Это мой первый пробный сайт, тут я просто напишу немного о себе и о моих друзьях! Они все невероятные люди и занимают отдельное место в моем сердце. Про меня думаю все и так знают! Просто хочется немного рассказать вам о каждом моем любимом человеке.</p>
@@ -97,19 +123,19 @@
     </div>
     <div class="friend">
         <img src="Айка.jpg" alt="Айка">
-        <p>Мы с вами можем писать романы, обсуждать неограниченность мира, господство и дарить другу надежду. Я так сильно вас люблю, дорогая..</p>
+        <p>Мы с вами можем писать романы, обсуждать неограниченность мира, поддерживать и дарить друг другу надежду. Я так сильно вас люблю, дорогая..</p>
     </div>
     <div class="friend">
         <img src="Женя.jpg" alt="Женя">
-        <p>Нас связало искусство, а также трепетное чувство друг к другу! Невероятный позитив после каждой встречи и понимания! Спасибо, дорогая!</p>
+        <p>Нас связало искусство, а также трепетное чувство друг к другу! Невероятный позитив после каждой встречи и понимание! Спасибо, дорогая!</p>
     </div>
     <div class="friend">
         <img src="Расулинна.jpg" alt="Расулинна">
-        <p>Приятно осознавать, что в мире есть человек, которого ты так хорошо понимаешь, и который так хорошо меня понимает. У тебя всегда есть нужные слова. Ты - самый взрослый человек, которого я знаю.</p>
+        <p>Приятно осознавать, что в мире есть человек, которого ты так хорошо понимаешь, и который так хорошо понимает меня. У тебя всегда есть нужные слова. Ты - самый взрослый человек, которого я знаю.</p>
     </div>
     <div class="friend">
         <img src="Даша.jpg" alt="Даша">
-        <p>Отношусь к тебе, как к своей родной сестре..Очень внимательная, добрая и просто солнечная.</p>
+        <p>Отношусь к тебе, как к своей родной сестре..Очень внимательная, добрая, и просто солнечная.</p>
     </div>
     <div class="friend">
         <img src="Даня.jpg" alt="Даня">
@@ -117,7 +143,7 @@
     </div>
     <div class="friend">
         <img src="Люба.jpg" alt="Люба">
-        <p>Люба, мы очень похожи и одновременно очень разные. Я люблю тебя всем сердцем и каждый раз хочу увидеть тебя! Хочу, чтобы мы жили в одном доме в Италии и гуляли на парных свиданиях с суровыми горячими парнями!!</p>
+        <p>Люба, мы очень похожи и одновременно очень разные. Я люблю тебя всем сердцем и каждый раз хочу увидеть тебя! Хочу, чтобы мы жили в одном доме в Италии и ходили на парные свидания с самыми горячими парнями!!</p>
     </div>
     <div class="friend">
         <img src="Амаля.jpg" alt="Амаля">
@@ -127,5 +153,8 @@
         <img src="Матвей.jpg" alt="Матвей">
         <p>Самый эмпатичный человек, которого я знаю. Я просто люблю тебя! Спасибо, что всегда рядом и поддерживаешь и веришь в меня!</p>
     </div>
+    
+    <!-- Дополнительный контент для прокрутки -->
+    <div style="height: 1500px;"></div> <!-- Добавляем пустой элемент для прокрутки -->
 </body>
 </html>
