@@ -8,7 +8,7 @@
     <style>
         body {
             font-family: 'Roboto', sans-serif; /* Современный шрифт */
-            background-color: #f8f8f8; /* Светлый фон */
+            background-color: #e3f2fd; /* Светлый синий фон */
             margin: 0;
             padding: 20px;
             text-align: center;
@@ -17,7 +17,7 @@
             min-height: 100vh;
         }
         h1 {
-            color: #ff7f50; /* Оранжевый цвет заголовка */
+            color: #ff9800; /* Оранжевый цвет заголовка */
             margin-bottom: 20px;
             text-transform: uppercase; /* Капсом */
         }
@@ -32,20 +32,20 @@
             transition: transform 0.2s; /* Плавное изменение трансформации */
         }
         .friend:hover {
-            transform: scale(1.05); /* Увеличение иконки при наведении */
+            transform: translateY(-5px); /* Качание карточки при наведении */
         }
         img {
-            max-width: 100%;
+            max-width: 70px; /* Уменьшение размера изображения */
             height: auto;
             border-radius: 50%; /* Круглая иконка */
-            border: 2px solid #ff7f50; /* Оранжевый круглый контур */
+            border: 2px solid #ff9800; /* Оранжевый круглый контур */
             transition: transform 0.2s; /* Плавное изменение трансформации для изображения */
         }
         img:hover {
-            transform: scale(1.1); /* Увеличение изображения при наведении */
+            transform: scale(1.1) rotate(-5deg); /* Увеличение и небольшое вращение при наведении */
         }
         p {
-            font-size: 16px;
+            font-size: 18px; /* Увеличение размера текста под фотографиями */
             color: #333;
         }
 
@@ -76,7 +76,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(to bottom, #ffcc66, #6699ff); /* Градиент от оранжевого к синему */
+            background: linear-gradient(to bottom, #ff9800, #2196F3); /* Градиент от оранжевого к синему */
             z-index: -1; /* За всеми элементами */
             opacity: 0.8; /* Непрозрачность фона */
         }
