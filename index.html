@@ -59,12 +59,24 @@
 
         @keyframes fall {
             0% {
-                transform: translateY(0);
+                transform: translateY(0) rotate(0deg);
                 opacity: 1;
             }
             100% {
-                transform: translateY(100vh);
+                transform: translateY(100vh) rotate(360deg); /* Падение с вращением */
                 opacity: 0;
+            }
+        }
+
+        @keyframes sway {
+            0% {
+                transform: translateX(0px);
+            }
+            50% {
+                transform: translateX(20px); /* Качание вправо */
+            }
+            100% {
+                transform: translateX(0px); /* Возврат в исходное положение */
             }
         }
 
@@ -90,9 +102,9 @@
             const leaf = document.createElement('img');
             leaf.src = 'лист.png';
             leaf.className = 'falling-leaf';
-            leaf.style.width = '30px'; // Уменьшенный размер листа
-            leaf.style.left = `${Math.random() * 100}%;`;
-            leaf.style.animation = `fall 5s linear forwards`; // Лист падает за 5 секунд
+            leaf.style.width = '50px'; // Увеличенный размер листа
+            leaf.style.left = `${Math.random() * 100}vw`; // Случайная точка появления по ширине экрана
+            leaf.style.animation = `fall 6s linear forwards, sway 2s ease-in-out infinite`; // Падение за 6 секунд с покачиванием
             leaf.style.top = '0';
             leaf.style.opacity = '1'; // Устанавливаем непрозрачность
 
@@ -104,8 +116,8 @@
             });
         }
 
-        // Создаем новый лист каждые 1 секунду
-        setInterval(createFallingLeaf, 1000);
+        // Создаем новый лист каждые 3 секунды
+        setInterval(createFallingLeaf, 3000);
     </script>
 
     <div class="friend">
