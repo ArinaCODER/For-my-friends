@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Арина и её друзья</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffebcd; /* светло-оранжевый фон */
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            color: #333;
+            overflow: hidden; /* Скрывает прокрутку из-за анимации */
+        }
+        h1 {
+            color: #1e3a78; /* Темно-синий цвет */
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .friend {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #ffffff; /* Белый фон для карточек */
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
+        }
+        .friend:hover {
+            transform: translateY(-5px);
+        }
+        img {
+            max-width: 200px;
+            height: auto;
+            border-radius: 50%;
+            border: 3px solid #1e3a78; /* Темно-синяя рамка */
+            margin-bottom: 15px;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        /* Анимация падающих листьев */
+        @keyframes fall {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        .leaf {
+            position: absolute;
+            top: -10%;
+            width: 50px;
+            opacity: 0.8;
+            animation: fall linear infinite;
+            pointer-events: none; /* Исключает взаимодействие с листьями */
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Арина и её друзья</h1>
+
+    <div class="friend">
+        <img src="photo_2023-11-03_19-53-30.jpg" alt="Арина">
+        <p>Привет! Это мой первый пробный сайт, тут я просто напишу немного о себе и о моих друзьях! Они все невероятные люди и занимают отдельное место в моем сердце. Про меня думаю все и так знают! Просто хочется немного рассказать вам о каждом моем любимом человеке.</p>
+    </div>
+
+    <div class="friend">
+        <img src="Мэри.jpg" alt="Мэри">
+        <p>Мы не знаем о друг друге все досконально, но с тобой это и не нужно, главное, что мы чувствуем!! Что бы не случилось, и где бы мы не были, я всегда буду с тобой!</p>
+    </div>
+
+    <div class="friend">
+        <img src="Карина.jpg" alt="Карина">
+        <p>Ты - мой духовный близнец. То, как ты веришь в меня каждый раз поражает, как это вообще возможно? Наши разговоры никто не сможет переплюнуть.. Ценю и люблю тебя до и после смерти!</p>
+    </div>
+
+    <div class="friend">
+        <img src="Айка.jpg" alt="Айка">
+        <p>Мы с вами можем писать романы, обсуждать неограниченность мира, поддерживать и дарить друг другу надежду. Я так сильно вас люблю, дорогая..</p>
+    </div>
+
+    <div class="friend">
+        <img src="Женя.jpg" alt="Женя">
+        <p>Нас связало искусство, а также трепетное чувство друг к другу! Невероятный позитив после каждой встречи и понимание! Спасибо, дорогая!</p>
+    </div>
+
+    <div class="friend">
+        <img src="Расулинна.jpg" alt="Расулинна">
+        <p>Приятно осознавать, что в мире есть человек, которого ты так хорошо понимаешь, и который так хорошо понимает меня. У тебя всегда есть нужные слова. Ты - самый взрослый человек, которого я знаю.</p>
+    </div>
+
+    <div class="friend">
+        <img src="Даша.jpg" alt="Даша">
+        <p>Отношусь к тебе, как к своей родной сестре..Очень внимательная, добрая и просто солнечная.</p>
+    </div>
+
+    <div class="friend">
+        <img src="Даня.jpg" alt="Даня">
+        <p>Что бы не случилось, я очень сильно тебя люблю и всегда буду рядом!</p>
+    </div>
+
+    <div class="friend">
+        <img src="Люба.jpg" alt="Люба">
+        <p>Люба, мы очень похожи и одновременно очень разные. Я люблю тебя всем сердцем и каждый раз хочу увидеть тебя! Хочу, чтобы мы жили в одном доме в Италии и ходили на парные свидания с самыми горячими парнями!!</p>
+    </div>
+
+    <div class="friend">
+        <img src="Амаля.jpg" alt="Амаля">
+        <p>Моя младшая сестренка, ты бы знала, как сильно я тебя люблю! Всем сердцем! Увидимся уже в Германии!</p>
+    </div>
+
+    <div class="friend">
+        <img src="Матвей.jpg" alt="Матвей">
+        <p>Самый эмпатичный человек, которого я знаю. Я просто люблю тебя! Спасибо, что всегда рядом и поддерживаешь и веришь в меня!</p>
+    </div>
+
+    <script>
+        // Создание падающих листьев
+        function createLeaf() {
+            const leaf = document.createElement('img');
+            leaf.src = 'лист.png'; // Используем ваше изображение "лист.png"
+            leaf.className = 'leaf';
+            leaf.style.left = Math.random() * 100 + 'vw'; // Положение по горизонтали
+            leaf.style.animationDuration = Math.random() * 3 + 3 + 's'; // Длительность анимации
+            document.body.appendChild(leaf);
+
+            // Удаление листа после окончания анимации
+            leaf.addEventListener('animationend', () => {
+                leaf.remove();
+            });
+        }
+
+        // Генерация листьев каждые 500 мс
+        setInterval(createLeaf, 500);
+    </script>
+
+</body>
+</html>
