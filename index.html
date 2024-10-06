@@ -49,37 +49,6 @@
             color: #333;
         }
 
-        /* Анимация падающих листьев */
-        .falling-leaf {
-            position: absolute;
-            z-index: 0;
-            pointer-events: none;
-            opacity: 0;
-        }
-
-        @keyframes fall {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) rotate(360deg); /* Падение с вращением */
-                opacity: 0;
-            }
-        }
-
-        @keyframes sway {
-            0% {
-                transform: translateX(0px);
-            }
-            50% {
-                transform: translateX(20px); /* Качание вправо */
-            }
-            100% {
-                transform: translateX(0px); /* Возврат в исходное положение */
-            }
-        }
-
         /* Стили для осеннего фона */
         body::before {
             content: '';
@@ -96,29 +65,6 @@
 </head>
 <body>
     <h1>АРИНА И ЕЕ ДРУЗЬЯ</h1>
-
-    <script>
-        function createFallingLeaf() {
-            const leaf = document.createElement('img');
-            leaf.src = 'лист.png';
-            leaf.className = 'falling-leaf';
-            leaf.style.width = '50px'; // Увеличенный размер листа
-            leaf.style.left = `${Math.random() * 100}vw`; // Случайная точка появления по ширине экрана
-            leaf.style.animation = `fall 6s linear forwards, sway 2s ease-in-out infinite`; // Падение за 6 секунд с покачиванием
-            leaf.style.top = '0';
-            leaf.style.opacity = '1'; // Устанавливаем непрозрачность
-
-            document.body.appendChild(leaf);
-
-            // Удаляем лист после завершения анимации
-            leaf.addEventListener('animationend', () => {
-                leaf.remove();
-            });
-        }
-
-        // Создаем новый лист каждые 3 секунды
-        setInterval(createFallingLeaf, 3000);
-    </script>
 
     <div class="friend">
         <img src="photo_2023-11-03_19-53-30.jpg" alt="Арина">
