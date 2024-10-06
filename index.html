@@ -19,6 +19,7 @@
         h1 {
             color: #ff7f50; /* Оранжевый цвет заголовка */
             margin-bottom: 20px;
+            text-transform: uppercase; /* Капсом */
         }
         .friend {
             margin: 20px 0;
@@ -28,11 +29,20 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: relative;
             z-index: 1;
+            transition: transform 0.2s; /* Плавное изменение трансформации */
+        }
+        .friend:hover {
+            transform: scale(1.05); /* Увеличение иконки при наведении */
         }
         img {
             max-width: 100%;
             height: auto;
-            border-radius: 10px;
+            border-radius: 50%; /* Круглая иконка */
+            border: 2px solid #ff7f50; /* Оранжевый круглый контур */
+            transition: transform 0.2s; /* Плавное изменение трансформации для изображения */
+        }
+        img:hover {
+            transform: scale(1.1); /* Увеличение изображения при наведении */
         }
         p {
             font-size: 16px;
@@ -76,7 +86,7 @@
     <h1>Арина и её друзья</h1>
     
     <!-- Добавление анимации падающих листьев -->
-    <img class="falling-leaf" src="лист.png" alt="Падающий лист" style="width: 50px; left: 20%; top: 0; animation: fall 30s infinite;">
+    <img class="falling-leaf" src="лист.png" alt="Падающий лист" style="width: 50px; left: 20%; top: 0; animation: fall 15s infinite;"> <!-- Лист падает каждые 15 секунд -->
     <script>
         function createFallingLeaf() {
             const leaf = document.createElement('img');
@@ -84,7 +94,7 @@
             leaf.className = 'falling-leaf';
             leaf.style.width = '50px';
             leaf.style.left = `${Math.random() * 100}%;`;
-            leaf.style.animation = `fall 30s linear forwards`;
+            leaf.style.animation = `fall 5s linear forwards`; // Лист падает каждые 5 секунд
             leaf.style.top = '0';
 
             document.body.appendChild(leaf);
@@ -95,8 +105,8 @@
             });
         }
 
-        // Создаем новый лист каждые 30 секунд
-        setInterval(createFallingLeaf, 30000);
+        // Создаем новый лист каждые 5 секунд
+        setInterval(createFallingLeaf, 5000);
     </script>
 
     <div class="friend">
